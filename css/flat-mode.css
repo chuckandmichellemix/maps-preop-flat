@@ -1,0 +1,54 @@
+/* ==========================================================================
+   FLAT REVIEW MODE
+   This is a "basic/flat" copy of the dynamic Pre-Anesthesia Assessment form.
+   Every conditional section, sub-checklist, pediatric/adult field, cardiac
+   test detail, and detail modal is forced permanently visible (regardless
+   of WNL toggles or checkbox state) so the entire question set can be
+   reviewed top-to-bottom in one pass, without needing to click through
+   reveal logic. Interactivity (checkboxes, radios, inputs) still works
+   normally underneath - only the show/hide behavior is disabled visually.
+   ========================================================================== */
+
+.system-card__findings[hidden] { display: block !important; }
+.system-card__subgroup[hidden] { display: block !important; }
+.cardiac-test__detail[hidden] { display: flex !important; }
+.field-row[hidden] { display: grid !important; }
+.field[hidden] { display: block !important; }
+.section[hidden] { display: block !important; }
+.conditional[hidden] { display: block !important; }
+.drug-checklist[hidden] { display: flex !important; }
+.drug-row__date[hidden] { display: block !important; }
+.ped-allergy-which[hidden] { display: block !important; }
+[data-pediatric-only][hidden] { display: block !important; }
+[data-adult-only][hidden] { display: block !important; }
+.checklist-item[data-pediatric-only][hidden],
+.checklist-item[data-adult-only][hidden] { display: flex !important; }
+
+/* Detail modals become static inline blocks instead of popups, same trick
+   already used by this site's print stylesheet. */
+.modal-overlay[hidden] { display: block !important; }
+.modal-overlay {
+  position: static !important;
+  background: none !important;
+  padding: 0 !important;
+  margin-top: var(--space-2);
+  justify-content: flex-start;
+}
+.modal-overlay .modal {
+  box-shadow: none !important;
+  border: 1px solid var(--color-border);
+  max-width: none;
+  padding: var(--space-3);
+}
+.modal__footer { display: none !important; }
+
+/* Flat-mode banner */
+.flat-mode-banner {
+  background: #fff4d6;
+  border: 1px solid #e6c766;
+  color: #6b5200;
+  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md, 8px);
+  margin-bottom: var(--space-4);
+}
